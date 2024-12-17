@@ -16,9 +16,10 @@ jobs:
         run: |
           pip install -r ./task_a/requirements.txt
       - name: Run tests
-        run: |
-          cd task_a && pytest --cov=. --html=report.html
+        run: pytest ./task_a/task_a.py
+
+      - run: pytest ./task_a/task_a.py --html=./report.html
       - uses: actions/upload-artifact@v4
         with:
-          name: task_amy-artifact
+          name: my-artifact
           path: report.html
